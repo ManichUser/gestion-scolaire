@@ -1,7 +1,9 @@
 
 services:
   backend:
-    build: ./apps/backend
+    build:
+      context: ./apps/backend
+      target: development
     ports:
       - "3000:3000"
     env_file:
