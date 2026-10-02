@@ -1,0 +1,20 @@
+
+services:
+  backend:
+    build: ./apps/backend
+    ports:
+      - "3000:3000"
+    env_file:
+      - ./apps/backend/.env
+    depends_on:
+      - redis
+    volumes:
+      - ./apps/backend:/app
+      - /app/node_modules
+    restart: unless-stopped
+
+  redis:
+    image: redis:alpine
+    ports:
+      - "6379:6379"
+    restart: unless-stopped
